@@ -15,7 +15,7 @@ session_start();
 		//Get auth token and build Sign In url.
 		$url = $twitterObj->getAuthorizationUrl();
         echo "helloinside";
-header("location : $url");
+echo "<a href='$url'>Please Sign In through Your Twitter Account</a>";
 	}
 	//Otherwise if user got token then the to & fro part starts
 	else
