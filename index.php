@@ -14,11 +14,13 @@ session_start();
 	{
 		//Get auth token and build Sign In url.
 		$url = $twitterObj->getAuthorizationUrl();
+        echo "helloinside";
 header("location : $url");
 	}
 	//Otherwise if user got token then the to & fro part starts
 	else
 	{
+        echo "hello";
 		$twitterObj->setToken($_GET['oauth_token']);
 		$token = $twitterObj->getAccessToken();
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);
