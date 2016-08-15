@@ -2,7 +2,7 @@
 +<?php
 require_once "Libs/codebird.php";
 include "Libs/secret.php";
-use \Codebird;
+use Codebird;
 
 Codebird::setConsumerKey($consumer_key,$consumer_secret);
 $cd=Codebird::getInstance();
