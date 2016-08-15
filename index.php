@@ -4,8 +4,8 @@ require_once "Libs/codebird.php";
 include "Libs/secret.php";
 //use Codebird\Codebird;
 
-/Codebird/Codebird::setConsumerKey($consumer_key,$consumer_secret);
-$cd->/Codebird/Codebird::getInstance();
+\Codebird\Codebird::setConsumerKey($consumer_key,$consumer_secret);
+$cd->\Codebird\Codebird::getInstance();
 //$cd->setToken($access_token,$access_token_secret);
 
 session_start();
