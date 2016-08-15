@@ -1,3 +1,4 @@
+<?php
 session_start();
 	
 	//Include Twitter OAuth library made by Jaisen Mathai, thanks for it!
