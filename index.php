@@ -1,5 +1,5 @@
 <?php 
-requier_once("Libs/vendor/autoload.php");
+require_once ("Libs/vendor/autoload.php");
 
 
 ?>
