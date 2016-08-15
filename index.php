@@ -12,6 +12,7 @@ session_start();
 
 if (! isset($_SESSION['oauth_token'])) {
   // get the request token
+    echo "session not set";
   $reply = $cb->oauth_requestToken([
     'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
   ]);
@@ -29,6 +30,7 @@ if (! isset($_SESSION['oauth_token'])) {
 
 } elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
   // verify the token
+    echo "session set";
   $cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
   unset($_SESSION['oauth_verify']);
 
