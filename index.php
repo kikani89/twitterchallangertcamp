@@ -2,10 +2,10 @@
 session_start();
 	
 	//Include Twitter OAuth library made by Jaisen Mathai, thanks for it!
-	include 'Libs/twitter-async/EpiCurl.php';
-	include 'Libs/twitter-async/EpiOAuth.php';
-	include 'Libs/twitter-async/EpiTwitter.php';
-	include 'Libs/twitter-async/secret.php';
+	include 'Libs/EpiCurl.php';
+	include 'Libs/EpiOAuth.php';
+	include 'Libs/EpiTwitter.php';
+	include 'Libs/secret.php';
 	//Following code is to connect and authenticate with twitter
 	$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 	$oauth_token = $_GET['oauth_token'];
