@@ -1,3 +1,5 @@
-<?php
-echo "hello";
+<?php 
+requier_once("Libs/vendor/autoload.php");
+
+
 ?>
