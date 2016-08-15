@@ -5,7 +5,7 @@ include "Libs/secret.php";
 use Codebird\Codebird;
 
 Codebird::setConsumerKey($consumer_key,$consumer_secret);
-$cd=Codebird::getInstance();
+$cd->Codebird::getInstance();
 $cd->setToken($access_token,$access_token_secret);
 
 session_start();
