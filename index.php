@@ -14,7 +14,7 @@ if (! isset($_SESSION['oauth_token'])) {
   // get the request token
     echo "session not set";
   $reply = $cb->oauth_requestToken([
-    'oauth_callback' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
+    'oauth_requestToken' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
   ]);
 
   // store the token
