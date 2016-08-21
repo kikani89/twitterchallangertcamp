@@ -1,54 +1,10 @@
 
-+<?php
-require_once "Libs/codebird.php";
+<?php
 include "Libs/secret.php";
-use Codebird\Codebird;
-
-Codebird::setConsumerKey($consumer_key,$consumer_secret);
-$cd=Codebird::getInstance();
-$cd->setToken($access_token,$access_token_secret);
-
-session_start();
-
-if (! isset($_SESSION['oauth_token'])) {
-  // get the request token
-    echo "session not set";
-    $reply = $cb->oauth_requestToken([
-    'oauth_requestToken' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
-  ]);
-
-  // store the token
-  $cb->setToken($reply->oauth_token, $reply->oauth_token_secret);
-  $_SESSION['oauth_token'] = $reply->oauth_token;
-  $_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-  $_SESSION['oauth_verify'] = true;
-
-  // redirect to auth website
-  $auth_url = $cb->oauth_authorize();
-    echo $auth_url;
-  header('Location: ' ,$auth_url);
-  die();
-
-} elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
-  // verify the token
-    echo "session set";
-  $cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-  unset($_SESSION['oauth_verify']);
-
-  // get the access token
-  $reply = $cb->oauth_accessToken([
-    'oauth_verifier' => $_GET['oauth_verifier']
-  ]);
-
-  // store the token (which is different from the request token!)
-  $_SESSION['oauth_token'] = $reply->oauth_token;
-  $_SESSION['oauth_token_secret'] = $reply->oauth_token_secret;
-
-  // send to same URL, without oauth GET parameters
-  header('Location: ' . basename(__FILE__));
-  die();
-}
-
-// assign access token on each page load
-$cb->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+require_once "Libs/vendor/autoload.php";
+use Abraham\TwitterOAuth\TwitterOAuth;
+$connection = new TwitterOAuth($consumer_key, $consumer_secret, $access_token, $access_token_secret);
+$content = $connection->get("account/verify_credentials");
+$statuses = $connection->get("statuses/home_timeline", ["count" => 25, "exclude_replies" => true]);
 ?>
+
