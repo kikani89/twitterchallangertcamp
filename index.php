@@ -25,6 +25,7 @@ if (! isset($_SESSION['oauth_token'])) {
 
   // redirect to auth website
   $auth_url = $cb->oauth_authorize();
+    echo $auth_url;
   header('Location: ' ,$auth_url);
   die();
 
