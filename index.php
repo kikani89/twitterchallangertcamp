@@ -6,14 +6,14 @@ use Codebird\Codebird;
 
 Codebird::setConsumerKey($consumer_key,$consumer_secret);
 $cd=Codebird::getInstance();
-//$cd->setToken($access_token,$access_token_secret);
+$cd->setToken($access_token,$access_token_secret);
 
 session_start();
 
 if (! isset($_SESSION['oauth_token'])) {
   // get the request token
     echo "session not set";
-  $reply = $cb->oauth_requestToken([
+    $reply = $cb->oauth_requestToken([
     'oauth_requestToken' => 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']
   ]);
 
@@ -25,7 +25,7 @@ if (! isset($_SESSION['oauth_token'])) {
 
   // redirect to auth website
   $auth_url = $cb->oauth_authorize();
-  header('Location: ' . $auth_url);
+  header('Location: ' ,$auth_url);
   die();
 
 } elseif (isset($_GET['oauth_verifier']) && isset($_SESSION['oauth_verify'])) {
